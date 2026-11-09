@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="266" viewBox="0 0 200 266">
+  <!-- Carta de número: forma 200x260 + espessura 6px. Troque as cores pela cor do número / sombra. -->
+  <path d="M24,0 H176 A24,24 0 0 1 200,24 V92 A38,38 0 0 0 200,168 V236 A24,24 0 0 1 176,260 H24 A24,24 0 0 1 0,236 V168 A38,38 0 0 0 0,92 V24 A24,24 0 0 1 24,0 Z" transform="translate(0,6)" fill="rgb(22,111,99)"/>
+  <path d="M24,0 H176 A24,24 0 0 1 200,24 V92 A38,38 0 0 0 200,168 V236 A24,24 0 0 1 176,260 H24 A24,24 0 0 1 0,236 V168 A38,38 0 0 0 0,92 V24 A24,24 0 0 1 24,0 Z" fill="#1E9A8A"/>
+</svg>

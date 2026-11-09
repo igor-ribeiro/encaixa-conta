@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="204" height="264" viewBox="-2 -2 204 264">
+  <!-- Lugar vazio na conta -->
+  <path d="M24,0 H176 A24,24 0 0 1 200,24 V92 A38,38 0 0 0 200,168 V236 A24,24 0 0 1 176,260 H24 A24,24 0 0 1 0,236 V168 A38,38 0 0 0 0,92 V24 A24,24 0 0 1 24,0 Z" fill="#FFFDF8" stroke="#9C8F7C" stroke-width="4" stroke-dasharray="14 10" stroke-linecap="round"/>
+</svg>

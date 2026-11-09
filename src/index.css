@@ -1,7 +1,75 @@
 @import "tailwindcss";
 
-@layer base {
-  html {
-    font-family: sans-serif;
-  }
+html,
+body,
+#root,
+.stage {
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  overscroll-behavior: none;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #fff6e9;
+  color: #2a2238;
+  font-family: 'Fredoka', system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.stage {
+  position: fixed;
+  width: 1194px;
+  height: 834px;
+  transform-origin: 0 0;
+  background: #fff6e9;
+  overflow: hidden;
+}
+
+button {
+  cursor: pointer;
+}
+
+@keyframes jump {
+  50% { transform: scale(1.08); }
+}
+.jump { animation: jump 220ms ease-out both; }
+
+@keyframes shake {
+  16.6% { transform: translateX(-10px); }
+  33.3% { transform: translateX(10px); }
+  50% { transform: translateX(-10px); }
+  66.6% { transform: translateX(10px); }
+  83.3% { transform: translateX(-10px); }
+}
+.shake { animation: shake 300ms linear; }
+
+@keyframes pulse-once {
+  50% { transform: scale(1.04); }
+}
+.pulse-once { animation: pulse-once 300ms ease-in-out; }
+
+@keyframes pulse {
+  50% { transform: scale(1.06); }
+}
+.next { animation: pulse 1.2s ease-in-out infinite; }
+
+@keyframes ghost-fade {
+  to { opacity: 0; }
+}
+@keyframes ghost-clear {
+  to { opacity: 0; transform: translateY(12px); }
+}
+.ghost-fade { animation: ghost-fade 200ms forwards; }
+.ghost-clear { animation: ghost-clear 250ms ease-in forwards; }
+
+@media (prefers-reduced-motion: reduce) {
+  .jump, .shake, .pulse-once, .next { animation: none; }
+  .ghost-clear { animation-name: ghost-fade; }
 }
