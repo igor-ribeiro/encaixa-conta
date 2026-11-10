@@ -91,7 +91,7 @@ Acontece quando uma carta de resposta encaixa no `result`.
 - Aparece a pílula verde "Certo! … é …" e, quando a voz termina, o botão **Próxima** (seta, sem texto, com pulso).
 
 **Errado:**
-- A carta treme (±10px × 3, 300ms), toca `sfx_ops` + `vo_ainda_nao` ("Hmm, ainda não. Conta as bolinhas!") e aparece a pílula laranja "Ainda não. Conta as bolinhas!".
+- A carta treme (±10px × 3, 300ms), toca `sfx_ops` + `vo_ainda_nao` ("Ainda não. Conta as bolinhas!") e aparece a pílula laranja "Ainda não. Conta as bolinhas!".
 - Depois de 600ms, a carta volta para a bandeja de respostas; a conta continua montada e a bandeja continua em `answers`.
 - `wrongAttempts += 1`.
 - **Com 2 erros seguidos**, antes de a carta voltar, roda a contagem guiada: as bolinhas de `a` e de `b` acendem uma a uma (anel `#FFD35C`, scale 1.3, a cada 600ms) enquanto a voz conta de `num_1` até `num_(a+b)`. O contador zera quando `a` ou `b` muda.

@@ -100,7 +100,7 @@ Acontece **somente** quando uma carta de resposta é encaixada no `result`.
   - Neste estado, a montagem fica travada: nada pode ser arrastado para dentro ou para fora.
   - Tocar em Próxima limpa os 5 lugares (as peças somem com fade e um leve movimento para baixo, 250ms) e volta ao estado vazio.
 - **Errado:**
-  - A carta do resultado treme (shake horizontal ±10px, 3 ciclos, 300ms), toca `sfx_ops` e a voz diz `vo_ainda_nao` ("Hmm, ainda não. Conta as bolinhas!").
+  - A carta do resultado treme (shake horizontal ±10px, 3 ciclos, 300ms), toca `sfx_ops` e a voz diz `vo_ainda_nao` ("Ainda não. Conta as bolinhas!").
   - Depois de 600ms, a carta volta para a bandeja de respostas. `a`, `+`, `b` e `=` continuam no lugar e a bandeja continua em `answers`.
   - O contador de erros da conta atual é incrementado.
 - **Dica depois de 2 erros seguidos na mesma conta:** antes de a carta voltar, roda a **contagem guiada**. As bolinhas de `a` e depois as de `b` acendem uma de cada vez (escala 1.3 e anel amarelo `#FFD35C`), a cada 600ms, enquanto a voz conta `num_1`, `num_2`, … até `a + b`. Isso não revela a carta certa na bandeja; só conta. O contador zera quando `a` ou `b` muda.
@@ -123,29 +123,26 @@ Acontece **somente** quando uma carta de resposta é encaixada no `result`.
 - A voz usa uma **fila única**: uma fala nova **interrompe** a anterior. Assim, uma criança que encaixa rápido sempre ouve a peça mais recente.
 - Enquanto a voz fala um número recém-colocado, mostre o balão de fala perto da peça (ícone de alto-falante + palavra entre aspas, por exemplo "oito"), que some quando o áudio termina.
 
-## 5. Áudio: lista de arquivos
+## 5. Áudio
 
-Formato `.m4a` (AAC), mono, 44.1kHz, normalizado em -16 LUFS, sem silêncio no começo e no fim. Pasta: `public/audio/`.
+**Voz:** Web Speech API (`speechSynthesis`), `lang = 'pt-BR'`, `rate = 0.9`. Os textos ficam em `src/audio.ts` (`TEXT`); a voz depende do aparelho.
 
-**Números:** `num_0` "zero", `num_1` "um", `num_2` "dois", `num_3` "três", `num_4` "quatro", `num_5` "cinco", `num_6` "seis", `num_7` "sete", `num_8` "oito", `num_9` "nove", `num_10` "dez", `num_11` "onze", `num_12` "doze", `num_13` "treze", `num_14` "catorze", `num_15` "quinze", `num_16` "dezesseis", `num_17` "dezessete", `num_18` "dezoito", `num_19` "dezenove", `num_20` "vinte".
+**Números:** `num_0` "zero" … `num_20` "vinte".
 
-**Voz:**
-| arquivo | fala |
+| chave | fala |
 |---|---|
 | `vo_intro` | "Vamos encaixar a conta?" |
 | `vo_mais` | "mais" |
 | `vo_igual` | "igual" |
 | `vo_e` | "é" |
 | `vo_certo` | "Certo!" |
-| `vo_ainda_nao` | "Hmm, ainda não. Conta as bolinhas!" |
+| `vo_ainda_nao` | "Ainda não. Conta as bolinhas!" |
 | `vo_monte_primeiro` | "Primeiro monte a conta!" |
 | `vo_outro_numero` | "Escolhe outro número!" |
 
-**Efeitos:** `sfx_pega`, `sfx_clique`, `sfx_boing`, `sfx_acerto`, `sfx_ops`.
+**Efeitos:** `sfx_pega`, `sfx_clique`, `sfx_boing`, `sfx_acerto`, `sfx_ops`, sintetizados (beeps) no `AudioContext`.
 
-Para desenvolvimento, gere placeholders (beeps) para os arquivos que faltarem; o jogo não pode quebrar se um áudio não existir.
-
-**Regra do iOS:** o `AudioContext` só é criado ou retomado (`resume()`) dentro do handler de toque do botão "Jogar". É nesse momento que todos os buffers são decodificados.
+**Regra do iOS:** o `AudioContext` e o primeiro `speechSynthesis.speak()` acontecem dentro do handler de toque do botão "Jogar".
 
 ## 6. Modelo de estado (sugestão)
 
